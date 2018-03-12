@@ -1,0 +1,57 @@
+{
+  "name": "time-capsule",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.1",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.1",
+    "@vue/cli-service": "^3.0.0-beta.1",
+    "crypto-js": "^3.1.9-1",
+    "element-ui": "^2.2.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "truffle-contract": "^3.0.4",
+    "truffle-solidity-loader": "0.0.8",
+    "vue-resource": "^1.4.0",
+    "vue-template-compiler": "^2.5.13",
+    "web3": "^1.0.0-beta.30",
+    "zeppelin-solidity": "^1.7.0"
+  },
+  "babel": {
+    "presets": [
+      "@vue/app"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "globals": {
+      "module": true,
+      "artifacts": true,
+      "web3": true,
+      "Web3": true
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
