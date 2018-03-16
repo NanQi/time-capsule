@@ -1,15 +1,28 @@
-import truffleConfig from "../truffle.js";
 import contract from "truffle-contract";
 import TimeCapsuleJson from "../build/contracts/TimeCapsule.json";
+import { Notification } from 'element-ui';
+import router from './router'
 
-var httpProvider = web3.currentProvider;
+var httpProvider = '';
 
-if (typeof web3 === "undefined") {
-    var web3Location = `http://${truffleConfig.rpc.host}:${
-        truffleConfig.rpc.port
-        }`;
-
-    httpProvider = new Web3.providers.HttpProvider(web3Location);
+if (typeof web3 !== "undefined") {
+    httpProvider = web3.currentProvider;
+}  else {
+    window.web3 = {};
+    var handler = () => {
+        router.push({name: 'about'})
+    }
+    Notification({ 
+        title: '提示',
+        dangerouslyUseHTMLString: true,
+        message: '请安装MetaMask插件',
+        type: 'error',
+        showClose: true,
+        center: true,
+        duration: 2500,
+        onClose: handler,
+        onClick: handler
+      });
 }
 
 web3 = new Web3(httpProvider);
