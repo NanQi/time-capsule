@@ -1,7 +1,7 @@
 import contract from "truffle-contract";
 import TimeCapsuleJson from "../build/contracts/TimeCapsule.json";
 import { Notification } from 'element-ui';
-import router from './router'
+import router from './router';
 
 var httpProvider = '';
 
@@ -10,9 +10,9 @@ if (typeof web3 !== "undefined") {
 }  else {
     window.web3 = {};
     var handler = () => {
-        router.push({name: 'about'})
-    }
-    Notification({ 
+        router.push({name: 'about'});
+    };
+    Notification({
         title: '提示',
         dangerouslyUseHTMLString: true,
         message: '请安装MetaMask插件',
@@ -64,19 +64,19 @@ function getNetwork() {
 
             resolve(web3);
         });
-    })
+    });
 }
 
 function getAccount() {
     return new Promise((resolve, reject) => {
         web3.eth.getAccounts((error, accounts) => {
             if (error) {
-                reject(error)
+                reject(error);
             } else {
-                resolve(accounts[0])
+                resolve(accounts[0]);
             }
         });
-    })
+    });
 }
 
 
@@ -91,13 +91,12 @@ function getContract() {
             return TimeCapsule.at(address);
         } else if (networkName == "Ganache test network") {
             TimeCapsule.setProvider(web3.currentProvider);
-            return TimeCapsule.deployed()
+            return TimeCapsule.deployed();
         }
-    })
-    
+    });
 }
 
 export default Promise.all([
     getNetwork()
     , getContract()
-    , getAccount()])
+    , getAccount()]);
